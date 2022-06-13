@@ -14,7 +14,7 @@ class CarShowroom
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 16)]
+    #[ORM\Column(type: 'string', length: 32)]
     private string $color;
 
     #[ORM\Column(type: 'integer')]
