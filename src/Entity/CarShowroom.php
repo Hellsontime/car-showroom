@@ -80,4 +80,26 @@ class CarShowroom
 
         return $this;
     }
+
+    #[ORM\ManyToOne(targetEntity: CarModel::class, inversedBy: "cars")]
+    private $model;
+
+    /**
+     * @return CarModel|null
+     */
+    public function getModel(): ?CarModel
+    {
+        return $this->model;
+    }
+
+    /**
+     * @param CarModel|null $model
+     * @return $this
+     */
+    public function setModel(?CarModel $model): self
+    {
+        $this->model = $model;
+
+        return $this;
+    }
 }

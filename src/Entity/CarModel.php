@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CarModelRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: "vehicles_directory")]
@@ -47,5 +49,21 @@ class CarModel
         $this->year = $year;
 
         return $this;
+    }
+
+    #[ORM\OneToMany(mappedBy: "model", targetEntity: CarShowroom::class)]
+    private $cars;
+
+    public function __construct()
+    {
+        $this->cars = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|CarShowroom[]
+     */
+    public function getCars(): ArrayCollection
+    {
+        return $this->cars;
     }
 }
