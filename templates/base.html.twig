@@ -7,48 +7,447 @@
 
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+{#        {{ encore_entry_link_tags('app') }}#}
+        <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+        <link rel="stylesheet" href="/build/app.css">
     {% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{# asset('favicon.ico') #}" />
 </head>
-<body id="{% block body_id %}{% endblock %}">
+<body class="bg-gray-100 h-5">
 
-{% block header %}
-    <header>
-        something in header
-    </header>
-{% endblock %}
+<!-- strat wrapper -->
+<div class="h-screen flex flex-row flex-wrap">
 
-<div class="container body-container">
-    {% block body %}
-        <div class="row">
-            <div id="main" class="col-sm-9">
-                {% block main %}
-                    something in main
-                {% endblock %}
+    <!-- start sidebar -->
+    <div id="sideBar"
+         class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
+
+
+        <!-- sidebar content -->
+        <div class="flex flex-col">
+
+            <!-- sidebar toggle -->
+            <div class="text-right hidden md:block mb-4">
+                <button id="sideBarHideBtn">
+                    <i class="fad fa-times-circle"></i>
+                </button>
             </div>
+            <!-- end sidebar toggle -->
 
-            <div id="sidebar" class="col-sm-3">
-                {% block sidebar %}
-                    something in sidebar
-                {% endblock %}
-            </div>
+            <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">home</p>
+
+            <!-- link -->
+            <a href="./"
+               class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                <i class="fad fa-shopping-cart text-xs mr-2"></i>
+                cars showroom dashboard
+            </a>
+            <!-- end link -->
+
+            <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">data</p>
+
+            <!-- link -->
+            <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                sold last year
+            </a>
+            <!-- end link -->
+
+            <!-- link -->
+            <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
+                unsold cars
+            </a>
+            <!-- end link -->
+
+            <!-- link -->
+            <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                <i class="fad fa-folder-open text-xs mr-2"></i>
+                currently on sale
+            </a>
+            <!-- end link -->
+
+
+
         </div>
-    {% endblock %}
+        <!-- end sidebar content -->
+
+    </div>
+    <!-- end sidbar -->
+
+    <!-- strat content -->
+    <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+
+
+        <!-- status -->
+        <div class="grid grid-cols-3 gap-5 lg:grid-cols-2">
+
+            <!-- status -->
+            <div class="card col-span-1">
+                <div class="card-body">
+                    <h5 class="uppercase text-xs tracking-wider font-extrabold">today</h5>
+                    <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                </div>
+            </div>
+            <!-- status -->
+
+            <!-- status -->
+            <div class="card col-span-1">
+                <div class="card-body">
+                    <h5 class="uppercase text-xs tracking-wider font-extrabold">yesterday</h5>
+                    <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                </div>
+            </div>
+            <!-- status -->
+
+            <!-- status -->
+            <div class="card col-span-1">
+                <div class="card-body">
+                    <h5 class="uppercase text-xs tracking-wider font-extrabold">last week</h5>
+                    <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                </div>
+            </div>
+            <!-- status -->
+
+            <!-- status -->
+            <div class="card col-span-1">
+                <div class="card-body">
+                    <h5 class="uppercase text-xs tracking-wider font-extrabold">last month</h5>
+                    <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                </div>
+            </div>
+            <!-- status -->
+
+            <!-- status -->
+            <div class="card col-span-1 lg:col-span-2">
+                <div class="card-body">
+                    <h5 class="uppercase text-xs tracking-wider font-extrabold">last 90-days</h5>
+                    <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                </div>
+            </div>
+            <!-- status -->
+
+            <!-- status -->
+            <div class="card col-span-1 lg:col-span-2">
+                <div class="card-body">
+                    <h5 class="uppercase text-xs tracking-wider font-extrabold">last year</h5>
+                    <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                </div>
+            </div>
+            <!-- status -->
+
+
+        </div>
+        <!-- end status -->
+
+        <!-- best seller & traffic -->
+        <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="font-extrabold text-lg">best sellers</h1>
+                        <a href="#" class="btn-gray text-sm">view all</a>
+                    </div>
+
+                    <table class="table-auto w-full mt-5 text-right">
+
+                        <thead>
+                        <tr>
+                            <td class="py-4 font-extrabold text-sm text-left">product</td>
+                            <td class="py-4 font-extrabold text-sm">price</td>
+                            <td class="py-4 font-extrabold text-sm">sold</td>
+                            <td class="py-4 font-extrabold text-sm">profit</td>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <!-- item -->
+                        <tr class="">
+                            <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                                <div class="w-8 h-8 overflow-hidden mr-3">
+                                    <img src="img/sneakers.svg" class="object-cover">
+                                </div>
+                                Sneakers and Tennis
+                            </td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-2"></span></td>
+                            <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
+                        </tr>
+                        <!-- end item -->
+
+                        <!-- item -->
+                        <tr class="">
+                            <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                                <div class="w-8 h-8 overflow-hidden mr-3">
+                                    <img src="img/socks.svg" class="object-cover">
+                                </div>
+                                Crazy Socks & Graphic Socks for Men
+                            </td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-2"></span></td>
+                            <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
+                        </tr>
+                        <!-- end item -->
+
+                        <!-- item -->
+                        <tr class="">
+                            <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                                <div class="w-8 h-8 overflow-hidden mr-3">
+                                    <img src="img/soccer.svg" class="object-cover">
+                                </div>
+                                Adidas Soccer Ball
+                            </td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-2"></span></td>
+                            <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
+                        </tr>
+                        <!-- end item -->
+
+                        <!-- item -->
+                        <tr class="">
+                            <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                                <div class="w-8 h-8 overflow-hidden mr-3">
+                                    <img src="img/food.svg" class="object-cover">
+                                </div>
+                                Best Chocolate Chip Cookies
+                            </td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-2"></span></td>
+                            <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
+                            <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
+                        </tr>
+                        <!-- end item -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 class="font-extrabold text-lg">recent orders</h1>
+                        <a href="#" class="btn-gray text-sm">view all</a>
+                    </div>
+
+                    <!-- start a table -->
+                    <table class="table-fixed w-full mt-8">
+
+                        <!-- table head -->
+                        <thead class="text-left">
+                        <tr>
+                            <th class="w-1/2 pb-10 text-sm font-extrabold tracking-wide">customer</th>
+                            <th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Product</th>
+                            <th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Invoice</th>
+                            <th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">price</th>
+                            <th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">status</th>
+                        </tr>
+                        </thead>
+                        <!-- end table head -->
+
+                        <!-- table body -->
+                        <tbody class="text-left text-gray-600">
+
+                        <!-- item -->
+                        <tr>
+                            <!-- name -->
+                            <th class="w-1/2 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full">
+                                <div class="w-8 h-8 overflow-hidden rounded-full">
+                                    <img src="img/user2.jpg" class="object-cover">
+                                </div>
+                                <p class="ml-3 name-1">user name</p>
+                            </th>
+                            <!-- name -->
+
+                            <!-- product -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">Nike Sport</th>
+                            <!-- product -->
+
+                            <!-- invoice -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">#<span class="num-4"></span>
+                            </th>
+                            <!-- invoice -->
+
+                            <!-- price -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">$<span class="num-2"></span>
+                            </th>
+                            <!-- price -->
+
+                            <!-- status -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">shipped</th>
+                            <!-- status -->
+
+                        </tr>
+                        <!-- item -->
+
+
+                        <!-- item -->
+                        <tr>
+                            <!-- name -->
+                            <th class="w-1/2 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full">
+                                <div class="w-8 h-8 overflow-hidden rounded-full">
+                                    <img src="img/user3.jpg" class="object-cover">
+                                </div>
+                                <p class="ml-3 name-1">user name</p>
+                            </th>
+                            <!-- name -->
+
+                            <!-- product -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">Nike Sport</th>
+                            <!-- product -->
+
+                            <!-- invoice -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">#<span class="num-4"></span>
+                            </th>
+                            <!-- invoice -->
+
+                            <!-- price -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">$<span class="num-2"></span>
+                            </th>
+                            <!-- price -->
+
+                            <!-- status -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">shipped</th>
+                            <!-- status -->
+
+                        </tr>
+                        <!-- item -->
+
+
+                        <!-- item -->
+                        <tr>
+                            <!-- name -->
+                            <th class="w-1/2 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full">
+                                <div class="w-8 h-8 overflow-hidden rounded-full">
+                                    <img src="img/user2.jpg" class="object-cover">
+                                </div>
+                                <p class="ml-3 name-1">user name</p>
+                            </th>
+                            <!-- name -->
+
+                            <!-- product -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">Nike Sport</th>
+                            <!-- product -->
+
+                            <!-- invoice -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">#<span class="num-4"></span>
+                            </th>
+                            <!-- invoice -->
+
+                            <!-- price -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">$<span class="num-2"></span>
+                            </th>
+                            <!-- price -->
+
+                            <!-- status -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">shipped</th>
+                            <!-- status -->
+
+                        </tr>
+                        <!-- item -->
+
+                        <!-- item -->
+                        <tr>
+                            <!-- name -->
+                            <th class="w-1/2 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full">
+                                <div class="w-8 h-8 overflow-hidden rounded-full">
+                                    <img src="img/user1.jpg" class="object-cover">
+                                </div>
+                                <p class="ml-3 name-1">user name</p>
+                            </th>
+                            <!-- name -->
+
+                            <!-- product -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">Nike Sport</th>
+                            <!-- product -->
+
+                            <!-- invoice -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">#<span class="num-4"></span>
+                            </th>
+                            <!-- invoice -->
+
+                            <!-- price -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">$<span class="num-2"></span>
+                            </th>
+                            <!-- price -->
+
+                            <!-- status -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">shipped</th>
+                            <!-- status -->
+
+                        </tr>
+                        <!-- item -->
+
+                        <!-- item -->
+                        <tr>
+                            <!-- name -->
+                            <th class="w-1/2 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full">
+                                <div class="w-8 h-8 overflow-hidden rounded-full">
+                                    <img src="img/user3.jpg" class="object-cover">
+                                </div>
+                                <p class="ml-3 name-1">user name</p>
+                            </th>
+                            <!-- name -->
+
+                            <!-- product -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">Nike Sport</th>
+                            <!-- product -->
+
+                            <!-- invoice -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">#<span class="num-4"></span>
+                            </th>
+                            <!-- invoice -->
+
+                            <!-- price -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">$<span class="num-2"></span>
+                            </th>
+                            <!-- price -->
+
+                            <!-- status -->
+                            <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">shipped</th>
+                            <!-- status -->
+
+                        </tr>
+                        <!-- item -->
+
+
+
+
+                        </tbody>
+                        <!-- end table body -->
+
+                    </table>
+                    <!-- end a table -->
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end best seller & traffic -->
+
+
+    </div>
+    <!-- end content -->
+
 </div>
+<!-- end wrapper -->
 
-{% block footer %}
-    <footer>
-        <div class="container">
-            <div class="row">
-                something in footer
-            </div>
-        </div>
-    </footer>
-{% endblock %}
+<!-- script -->
+
+<!-- end script -->
 
 </body>
 </html>
