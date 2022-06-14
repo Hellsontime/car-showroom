@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    something in dashboard main
+
+    <br>
+
+    the average price on cars sold for all time:
+    {{ render(controller(
+        'App\\Controller\\DashboardController::avgPriceAllTime'
+    )) }}
+
+    <br>
+
+    the average price on the cars sold today:
+    {{ render(controller(
+        'App\\Controller\\DashboardController::avgPriceToday'
+    )) }}
+
+    <br>
+
+    cars sold last year, divided by day:
+    {{ render(controller(
+        'App\\Controller\\DashboardController::carsSoldLastYear'
+    )) }}
+
+    <br>
+
+    unsold cars:
+    {{ render(controller(
+        'App\\Controller\\DashboardController::unsoldCars'
+    )) }}
+
+    <br>
+
+    list of car models currently on sale:
+    {{ render(controller(
+        'App\\Controller\\DashboardController::carsCurrentlyOnSale'
+    )) }}
+{% endblock %}
