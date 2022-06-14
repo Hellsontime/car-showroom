@@ -1,3 +1,8 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+cars-dashboard:
+  path: /
+  controller: App\Controller\DashboardController
+
