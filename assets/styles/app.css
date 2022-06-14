@@ -1,3 +1,30 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
+
+.card {
+    border-radius: 0.25rem;
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+    border-width: 1px;
+    --border-opacity: 1;
+    border-color: #e2e8f0;
+    border-color: rgba(226, 232, 240, var(--border-opacity))
+}
+
+.card .card-header {
+    border-bottom-width: 1px;
+    padding: 1.5rem
+}
+
+.card .card-body {
+    padding: 1.5rem
+}
+
+.card .card-footer {
+    border-top-width: 1px;
+    padding: 1.5rem
+}
