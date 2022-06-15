@@ -6,136 +6,14 @@
     <!-- strat wrapper -->
     <div class="h-screen flex flex-row flex-wrap">
 
-        <!-- start sidebar -->
-        <div id="sideBar"
-             class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
-
-
-            <!-- sidebar content -->
-            <div class="flex flex-col">
-
-                <!-- sidebar toggle -->
-                <div class="text-right hidden md:block mb-4">
-                    <button id="sideBarHideBtn">
-                        <i class="fad fa-times-circle"></i>
-                    </button>
-                </div>
-                <!-- end sidebar toggle -->
-
-                <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">home</p>
-
-                <!-- link -->
-                <a href="./"
-                   class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-shopping-cart text-xs mr-2"></i>
-                    cars showroom dashboard
-                </a>
-                <!-- end link -->
-
-                <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">data</p>
-
-                <!-- link -->
-                <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-calendar-edit text-xs mr-2"></i>
-                    sold last year
-                </a>
-                <!-- end link -->
-
-                <!-- link -->
-                <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
-                    unsold cars
-                </a>
-                <!-- end link -->
-
-                <!-- link -->
-                <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                    <i class="fad fa-folder-open text-xs mr-2"></i>
-                    currently on sale
-                </a>
-                <!-- end link -->
-
-            </div>
-            <!-- end sidebar content -->
-
-        </div>
-        <!-- end sidbar -->
+        {% include 'dashboard/sidebar.html.twig' %}
 
         <!-- strat content -->
         <div class="bg-gray-100 flex-1 p-6 md:mt-16">
 
-            <!-- status -->
-            <div class="grid grid-cols-3 gap-5 lg:grid-cols-2">
+            {% block content %}
 
-                <!-- card -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::avgToday'
-                )) }}
-                <!-- card -->
-
-                <!-- card -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::avgWeek'
-                )) }}
-                <!-- card -->
-
-                <!-- card -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::avgMonth'
-                )) }}
-                <!-- card -->
-
-                <!-- card -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::avgQuarter'
-                )) }}
-                <!-- card -->
-
-                <!-- card -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::avgYear'
-                )) }}
-                <!-- card -->
-
-                <!-- card -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::avgAllTime'
-                )) }}
-                <!-- card -->
-
-            </div>
-            <!-- end status -->
-
-            <!-- Unsold cars & Sold last year -->
-            <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
-
-                <!-- cars sold last year table -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::carsSoldLastYear', {'sliced': true}
-                )) }}
-                <!-- cars sold last year table -->
-
-                <!-- unsold cars -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::unsoldCars', {'sliced': true}
-                )) }}
-                <!-- unsold cars -->
-
-            </div>
-            <!-- end Unsold cars & Sold last year -->
-
-            <!-- Cars currently on sale -->
-            <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 mt-5">
-
-                <!-- Cars currently on sale -->
-                {{ render(controller(
-                    'App\\Controller\\DashboardController::carsCurrentlyOnSale', {'sliced': true}
-                )) }}
-                <!-- end Cars currently on sale -->
-
-            </div>
-            <!-- end Cars currently on sale -->
-
+            {% endblock %}
 
         </div>
         <!-- end content -->
