@@ -1,0 +1,13 @@
+{% extends 'dashboard/card.html.twig' %}
+
+{% block period %}
+    last month
+{% endblock %}
+
+{% block value %}
+    {{ avgMonth }}
+{% endblock %}
+
+{% block orders %}
+    {{ orders }}
+{% endblock %}

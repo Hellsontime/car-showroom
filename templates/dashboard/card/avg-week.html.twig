@@ -1,0 +1,13 @@
+{% extends 'dashboard/card.html.twig' %}
+
+{% block period %}
+    last week
+{% endblock %}
+
+{% block value %}
+    {{ avgWeek }}
+{% endblock %}
+
+{% block orders %}
+    {{ orders }}
+{% endblock %}
