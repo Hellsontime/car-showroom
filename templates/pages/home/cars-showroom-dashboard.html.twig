@@ -1,0 +1,77 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block content %}
+
+    <!-- status -->
+    <div class="grid grid-cols-3 gap-5 lg:grid-cols-2">
+
+        <!-- card -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::avgToday'
+        )) }}
+        <!-- card -->
+
+        <!-- card -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::avgWeek'
+        )) }}
+        <!-- card -->
+
+        <!-- card -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::avgMonth'
+        )) }}
+        <!-- card -->
+
+        <!-- card -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::avgQuarter'
+        )) }}
+        <!-- card -->
+
+        <!-- card -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::avgYear'
+        )) }}
+        <!-- card -->
+
+        <!-- card -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::avgAllTime'
+        )) }}
+        <!-- card -->
+
+    </div>
+    <!-- end status -->
+
+    <!-- Unsold cars & Sold last year -->
+    <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
+
+        <!-- cars sold last year table -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::carsSoldLastYear', {'sliced': true, 'button': true}
+        )) }}
+        <!-- cars sold last year table -->
+
+        <!-- unsold cars -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::unsoldCars', {'sliced': true, 'button': true}
+        )) }}
+        <!-- unsold cars -->
+
+    </div>
+    <!-- end Unsold cars & Sold last year -->
+
+    <!-- Cars currently on sale -->
+    <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 mt-5">
+
+        <!-- Cars currently on sale -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::carsCurrentlyOnSale', {'sliced': true, 'button': true}
+        )) }}
+        <!-- end Cars currently on sale -->
+
+    </div>
+    <!-- end Cars currently on sale -->
+
+{% endblock %}
