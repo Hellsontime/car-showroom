@@ -55,8 +55,6 @@
                 </a>
                 <!-- end link -->
 
-
-
             </div>
             <!-- end sidebar content -->
 
@@ -65,8 +63,6 @@
 
         <!-- strat content -->
         <div class="bg-gray-100 flex-1 p-6 md:mt-16">
-
-
 
             <!-- status -->
             <div class="grid grid-cols-3 gap-5 lg:grid-cols-2">
@@ -107,138 +103,38 @@
                 )) }}
                 <!-- card -->
 
-
             </div>
             <!-- end status -->
 
             <!-- Unsold cars & Sold last year -->
             <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
 
-                <div class="card">
+                <!-- cars sold last year table -->
+                {{ render(controller(
+                    'App\\Controller\\DashboardController::carsSoldLastYear', {'sliced': true}
+                )) }}
+                <!-- cars sold last year table -->
 
-                    <div class="card-body">
-                        <div class="flex flex-row justify-between items-center">
-                            <h1 class="font-extrabold text-lg">cars sold last year</h1>
-                            <a href="#" class="btn-gray text-sm">view all</a>
-                        </div>
-
-                        <table class="table-auto w-full mt-5 text-right">
-
-                            <thead>
-                            <tr>
-                                <td class="py-4 font-extrabold text-sm text-left">date</td>
-                                <td class="py-4 font-extrabold text-sm">cars sold</td>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-
-                            <!-- item -->
-                            <tr class="">
-                                <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
-                                    Sneakers and Tennis
-                                </td>
-                                <td class="py-4 text-xs text-gray-600"><span class="num-2"></span></td>
-                            </tr>
-                            <!-- end item -->
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-                </div>
-
-                <div class="card">
-
-                    <div class="card-body">
-                        <div class="flex flex-row justify-between items-center">
-                            <h1 class="font-extrabold text-lg">unsold cars</h1>
-                            <a href="#" class="btn-gray text-sm">view all</a>
-                        </div>
-
-                        <table class="table-auto w-full mt-5 text-right">
-
-                            <thead>
-                            <tr>
-                                <td class="py-4 font-extrabold text-sm text-left">model</td>
-                                <td class="py-4 font-extrabold text-sm">year</td>
-                                <td class="py-4 font-extrabold text-sm">color</td>
-                                <td class="py-4 font-extrabold text-sm">price</td>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-
-                            <!-- item -->
-                            <tr class="">
-                                <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
-                                    Sneakers and Tennis
-                                </td>
-                                <td class="py-4 text-xs text-gray-600"><span class="num-2"></span></td>
-                                <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
-                                <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
-                            </tr>
-                            <!-- end item -->
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-                </div>
-
+                <!-- unsold cars -->
+                {{ render(controller(
+                    'App\\Controller\\DashboardController::unsoldCars', {'sliced': true}
+                )) }}
+                <!-- unsold cars -->
 
             </div>
             <!-- end Unsold cars & Sold last year -->
 
-            <!-- Unsold cars & Sold last year -->
+            <!-- Cars currently on sale -->
             <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 mt-5">
 
-                <div class="card">
-
-                    <div class="card-body">
-                        <div class="flex flex-row justify-between items-center">
-                            <h1 class="font-extrabold text-lg">cars currently on sale</h1>
-                            <a href="#" class="btn-gray text-sm">view all</a>
-                        </div>
-
-                        <table class="table-auto w-full mt-5 text-right">
-
-                            <thead>
-                            <tr>
-                                <td class="py-4 font-extrabold text-sm text-left">model</td>
-                                <td class="py-4 font-extrabold text-sm">year</td>
-                                <td class="py-4 font-extrabold text-sm">color</td>
-                                <td class="py-4 font-extrabold text-sm">price</td>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-
-                            <!-- item -->
-                            <tr class="">
-                                <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
-                                    Sneakers and Tennis
-                                </td>
-                                <td class="py-4 text-xs text-gray-600"><span class="num-2"></span></td>
-                                <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
-                                <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
-                            </tr>
-                            <!-- end item -->
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-                </div>
-
-
-
+                <!-- Cars currently on sale -->
+                {{ render(controller(
+                    'App\\Controller\\DashboardController::carsCurrentlyOnSale', {'sliced': true}
+                )) }}
+                <!-- end Cars currently on sale -->
 
             </div>
-            <!-- end Unsold cars & Sold last year -->
+            <!-- end Cars currently on sale -->
 
 
         </div>
@@ -252,43 +148,4 @@
     <!-- end script -->
 
     </body>
-{% endblock %}
-
-{% block main %}
-    something in dashboard main
-
-    <br>
-
-    the average price on cars sold for all time:
-    {{ render(controller(
-        'App\\Controller\\DashboardController::avgPriceAllTime'
-    )) }}
-
-    <br>
-
-    the average price on the cars sold today:
-    {{ render(controller(
-        'App\\Controller\\DashboardController::avgPriceToday'
-    )) }}
-
-    <br>
-
-    cars sold last year, divided by day:
-    {{ render(controller(
-        'App\\Controller\\DashboardController::carsSoldLastYear'
-    )) }}
-
-    <br>
-
-    unsold cars:
-    {{ render(controller(
-        'App\\Controller\\DashboardController::unsoldCars'
-    )) }}
-
-    <br>
-
-    list of car models currently on sale:
-    {{ render(controller(
-        'App\\Controller\\DashboardController::carsCurrentlyOnSale'
-    )) }}
 {% endblock %}
