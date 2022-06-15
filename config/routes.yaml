@@ -2,7 +2,18 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-cars-dashboard:
+cars-showroom-dashboard:
   path: /
   controller: App\Controller\DashboardController
 
+cars-sold-last-year:
+  path: /cars-sold-last-year
+  controller: App\Controller\DashboardController::renderSoldLastYear
+
+unsold-cars:
+  path: /unsold-cars
+  controller: App\Controller\DashboardController::renderUnsoldCars
+
+cars-currently-on-sale:
+  path: /cars-currently-on-sale
+  controller: App\Controller\DashboardController::renderCurrentlyOnSale
