@@ -1,3 +1,31 @@
-{% block carsSoldLastYear %}
-cars sold last year
+{% extends 'dashboard/table.html.twig' %}
+
+{% block tableTitle %}
+    <h1 class="font-extrabold text-lg">cars sold last year</h1>
+{% endblock %}
+
+{% block tableButton %}
+    <a href="#" class="btn-gray text-sm">view all</a>
+{% endblock %}
+
+{% block tableHead %}
+    <td class="py-4 font-extrabold text-sm text-left">date</td>
+    <td class="py-4 font-extrabold text-sm">cars sold</td>
+{% endblock %}
+
+{% block tableBodyItems %}
+    {% for day in carsSoldLastYear %}
+        <!-- item -->
+        <tr class="">
+            <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                {{ day.date }}
+            </td>
+            <td class="py-4 text-xs text-gray-600">
+                <span class="num-2">
+                    {{ day.sold }}
+                </span>
+            </td>
+        </tr>
+        <!-- end item -->
+    {% endfor %}
 {% endblock %}
