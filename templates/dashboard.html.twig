@@ -1,5 +1,283 @@
 {% extends 'base.html.twig' %}
 
+{% block body %}
+    <body class="bg-gray-100 h-5">
+
+    <!-- strat wrapper -->
+    <div class="h-screen flex flex-row flex-wrap">
+
+        <!-- start sidebar -->
+        <div id="sideBar"
+             class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
+
+
+            <!-- sidebar content -->
+            <div class="flex flex-col">
+
+                <!-- sidebar toggle -->
+                <div class="text-right hidden md:block mb-4">
+                    <button id="sideBarHideBtn">
+                        <i class="fad fa-times-circle"></i>
+                    </button>
+                </div>
+                <!-- end sidebar toggle -->
+
+                <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">home</p>
+
+                <!-- link -->
+                <a href="./"
+                   class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-shopping-cart text-xs mr-2"></i>
+                    cars showroom dashboard
+                </a>
+                <!-- end link -->
+
+                <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">data</p>
+
+                <!-- link -->
+                <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-calendar-edit text-xs mr-2"></i>
+                    sold last year
+                </a>
+                <!-- end link -->
+
+                <!-- link -->
+                <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-file-invoice-dollar text-xs mr-2"></i>
+                    unsold cars
+                </a>
+                <!-- end link -->
+
+                <!-- link -->
+                <a href="#" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+                    <i class="fad fa-folder-open text-xs mr-2"></i>
+                    currently on sale
+                </a>
+                <!-- end link -->
+
+
+
+            </div>
+            <!-- end sidebar content -->
+
+        </div>
+        <!-- end sidbar -->
+
+        <!-- strat content -->
+        <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+
+
+            <!-- status -->
+            <div class="grid grid-cols-3 gap-5 lg:grid-cols-2">
+
+                <!-- status -->
+                <div class="card col-span-1">
+                    <div class="card-body">
+                        <h5 class="uppercase text-xs tracking-wider font-extrabold">today</h5>
+                        <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                    class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                    </div>
+                </div>
+                <!-- status -->
+
+                <!-- status -->
+                <div class="card col-span-1">
+                    <div class="card-body">
+                        <h5 class="uppercase text-xs tracking-wider font-extrabold">yesterday</h5>
+                        <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                    class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                    </div>
+                </div>
+                <!-- status -->
+
+                <!-- status -->
+                <div class="card col-span-1">
+                    <div class="card-body">
+                        <h5 class="uppercase text-xs tracking-wider font-extrabold">last week</h5>
+                        <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                    class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                    </div>
+                </div>
+                <!-- status -->
+
+                <!-- status -->
+                <div class="card col-span-1">
+                    <div class="card-body">
+                        <h5 class="uppercase text-xs tracking-wider font-extrabold">last month</h5>
+                        <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                    class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                    </div>
+                </div>
+                <!-- status -->
+
+                <!-- status -->
+                <div class="card col-span-1 lg:col-span-2">
+                    <div class="card-body">
+                        <h5 class="uppercase text-xs tracking-wider font-extrabold">last 90-days</h5>
+                        <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                    class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                    </div>
+                </div>
+                <!-- status -->
+
+                <!-- status -->
+                <div class="card col-span-1 lg:col-span-2">
+                    <div class="card-body">
+                        <h5 class="uppercase text-xs tracking-wider font-extrabold">last year</h5>
+                        <h1 class="capitalize text-lg mt-1 mb-1">$<span class="num-3"></span> <span
+                                    class="text-xs tracking-widest font-extrabold"> / <span class="num-2"></span> orders</span></h1>
+                    </div>
+                </div>
+                <!-- status -->
+
+
+            </div>
+            <!-- end status -->
+
+            <!-- Unsold cars & Sold last year -->
+            <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="flex flex-row justify-between items-center">
+                            <h1 class="font-extrabold text-lg">cars sold last year</h1>
+                            <a href="#" class="btn-gray text-sm">view all</a>
+                        </div>
+
+                        <table class="table-auto w-full mt-5 text-right">
+
+                            <thead>
+                            <tr>
+                                <td class="py-4 font-extrabold text-sm text-left">date</td>
+                                <td class="py-4 font-extrabold text-sm">cars sold</td>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <!-- item -->
+                            <tr class="">
+                                <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                                    Sneakers and Tennis
+                                </td>
+                                <td class="py-4 text-xs text-gray-600"><span class="num-2"></span></td>
+                            </tr>
+                            <!-- end item -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="flex flex-row justify-between items-center">
+                            <h1 class="font-extrabold text-lg">unsold cars</h1>
+                            <a href="#" class="btn-gray text-sm">view all</a>
+                        </div>
+
+                        <table class="table-auto w-full mt-5 text-right">
+
+                            <thead>
+                            <tr>
+                                <td class="py-4 font-extrabold text-sm text-left">model</td>
+                                <td class="py-4 font-extrabold text-sm">year</td>
+                                <td class="py-4 font-extrabold text-sm">color</td>
+                                <td class="py-4 font-extrabold text-sm">price</td>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <!-- item -->
+                            <tr class="">
+                                <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                                    Sneakers and Tennis
+                                </td>
+                                <td class="py-4 text-xs text-gray-600"><span class="num-2"></span></td>
+                                <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
+                                <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
+                            </tr>
+                            <!-- end item -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- end Unsold cars & Sold last year -->
+
+            <!-- Unsold cars & Sold last year -->
+            <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 mt-5">
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="flex flex-row justify-between items-center">
+                            <h1 class="font-extrabold text-lg">cars currently on sale</h1>
+                            <a href="#" class="btn-gray text-sm">view all</a>
+                        </div>
+
+                        <table class="table-auto w-full mt-5 text-right">
+
+                            <thead>
+                            <tr>
+                                <td class="py-4 font-extrabold text-sm text-left">model</td>
+                                <td class="py-4 font-extrabold text-sm">year</td>
+                                <td class="py-4 font-extrabold text-sm">color</td>
+                                <td class="py-4 font-extrabold text-sm">price</td>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <!-- item -->
+                            <tr class="">
+                                <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                                    Sneakers and Tennis
+                                </td>
+                                <td class="py-4 text-xs text-gray-600"><span class="num-2"></span></td>
+                                <td class="py-4 text-xs text-gray-600"><span class="num-3"></span></td>
+                                <td class="py-4 text-xs text-gray-600">$ <span class="num-4"></span></td>
+                            </tr>
+                            <!-- end item -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <!-- end Unsold cars & Sold last year -->
+
+
+        </div>
+        <!-- end content -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <!-- script -->
+
+    <!-- end script -->
+
+    </body>
+{% endblock %}
+
 {% block main %}
     something in dashboard main
 
