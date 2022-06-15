@@ -1,8 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
+
+body, h1, h2, h3, h4, h5, h6, p, a {
+    text-transform: capitalize
+}
+
+.btn-gray {
+    text-align: center;
+    text-transform: capitalize;
+    --bg-opacity: 1;
+    background-color: #f7fafc;
+    background-color: rgba(247, 250, 252, var(--bg-opacity));
+    border-width: 1px;
+    --border-opacity: 1;
+    border-color: #e2e8f0;
+    border-color: rgba(226, 232, 240, var(--border-opacity));
+    display: block;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.25rem;
+    --text-opacity: 1;
+    color: #718096;
+    color: rgba(113, 128, 150, var(--text-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms
+}
+
+.btn-gray:hover {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+    --text-opacity: 1;
+    color: #2d3748;
+    color: rgba(45, 55, 72, var(--text-opacity));
+    border-width: 1px;
+    --border-opacity: 1;
+    border-color: #e2e8f0;
+    border-color: rgba(226, 232, 240, var(--border-opacity))
+}
 
 .card {
     border-radius: 0.25rem;
