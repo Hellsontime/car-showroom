@@ -4,9 +4,13 @@
     <h1 class="font-extrabold text-lg">cars currently on sale</h1>
 {% endblock %}
 
+
 {% block tableButton %}
-    <a href="#" class="btn-gray text-sm">view all</a>
+    {% if button %}
+        <a href="./cars-currently-on-sale" class="btn-gray text-sm">view all</a>
+    {% endif %}
 {% endblock %}
+
 
 {% block tableHead %}
     <td class="py-4 font-extrabold text-sm text-left">model</td>
