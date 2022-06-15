@@ -1,3 +1,31 @@
-{% block carsCurrentlyOnSale %}
-cars currently on sale
+{% extends 'dashboard/table.html.twig' %}
+
+{% block tableTitle %}
+    <h1 class="font-extrabold text-lg">cars currently on sale</h1>
+{% endblock %}
+
+{% block tableButton %}
+    <a href="#" class="btn-gray text-sm">view all</a>
+{% endblock %}
+
+{% block tableHead %}
+    <td class="py-4 font-extrabold text-sm text-left">model</td>
+    <td class="py-4 font-extrabold text-sm">year</td>
+    <td class="py-4 font-extrabold text-sm">color</td>
+    <td class="py-4 font-extrabold text-sm">price</td>
+{% endblock %}
+
+{% block tableBodyItems %}
+    {% for car in carsCurrentlyOnSale %}
+        <!-- item -->
+        <tr class="">
+            <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                {{ car.model }}
+            </td>
+            <td class="py-4 text-xs text-gray-600"><span class="num-2">{{ car.year }}</span></td>
+            <td class="py-4 text-xs text-gray-600"><span class="num-3">{{ car.color }}</span></td>
+            <td class="py-4 text-xs text-gray-600">$ <span class="num-4">{{ car.price }}</span></td>
+        </tr>
+        <!-- end item -->
+    {% endfor %}
 {% endblock %}
