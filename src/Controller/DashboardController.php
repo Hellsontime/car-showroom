@@ -8,7 +8,22 @@ class DashboardController extends BaseController
 {
     public function __invoke(): Response
     {
-        return $this->render('dashboard.html.twig');
+        return $this->render('pages/home/cars-showroom-dashboard.html.twig');
+    }
+
+    public function renderSoldLastYear(): Response
+    {
+        return $this->render('pages/data/sold-last-year.html.twig');
+    }
+
+    public function renderUnsoldCars(): Response
+    {
+        return $this->render('pages/data/unsold-cars.html.twig');
+    }
+
+    public function renderCurrentlyOnSale(): Response
+    {
+        return $this->render('pages/data/currently-on-sale.html.twig');
     }
 
     public function avgToday(): Response
@@ -77,7 +92,7 @@ class DashboardController extends BaseController
         );
     }
 
-    public function carsSoldLastYear(bool $sliced): Response
+    public function carsSoldLastYear(bool $sliced = false, bool $button = false): Response
     {
         $carsSoldLastYear = [
             ['date' => '01.05.2022', 'sold' => 15],
@@ -96,11 +111,14 @@ class DashboardController extends BaseController
 
         return $this->render(
             'dashboard/table/cars-sold-last-year.html.twig',
-            ['carsSoldLastYear' => $carsSoldLastYear]
+            [
+                'carsSoldLastYear' => $carsSoldLastYear,
+                'button' => $button,
+            ]
         );
     }
 
-    public function unsoldCars(bool $sliced): Response
+    public function unsoldCars(bool $sliced = false, bool $button = false): Response
     {
         $unsoldCars = [
             ['model' => 'civic', 'year' => 2005, 'price' => 1234, 'color' => 'color'],
@@ -119,11 +137,14 @@ class DashboardController extends BaseController
 
         return $this->render(
             'dashboard/table/unsold-cars.html.twig',
-            ['unsoldCars' => $unsoldCars]
+            [
+                'unsoldCars' => $unsoldCars,
+                'button' => $button,
+            ]
         );
     }
 
-    public function carsCurrentlyOnSale(bool $sliced): Response
+    public function carsCurrentlyOnSale(bool $sliced = false, bool $button = false): Response
     {
         $carsCurrentlyOnSale = [
             ['model' => 'mercedes', 'year' => 2016, 'price' => 12325, 'color' => 'color'],
@@ -142,7 +163,10 @@ class DashboardController extends BaseController
 
         return $this->render(
             'dashboard/table/cars-currently-on-sale.html.twig',
-            ['carsCurrentlyOnSale' => $carsCurrentlyOnSale]
+            [
+                'carsCurrentlyOnSale' => $carsCurrentlyOnSale,
+                'button' => $button,
+            ]
         );
     }
 }
