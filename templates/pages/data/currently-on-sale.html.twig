@@ -1,0 +1,17 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block content %}
+
+    <!-- Cars currently on sale -->
+    <div class="grid grid-cols-1 lg:grid-cols-1 gap-5">
+
+        <!-- Cars currently on sale -->
+        {{ render(controller(
+            'App\\Controller\\DashboardController::carsCurrentlyOnSale',
+        )) }}
+        <!-- end Cars currently on sale -->
+
+    </div>
+    <!-- end Cars currently on sale -->
+
+{% endblock %}
