@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block tableButton %}
-    <a href="#" class="btn-gray text-sm">view all</a>
+    {% if button %}
+        <a href="./cars-sold-last-year" class="btn-gray text-sm">view all</a>
+    {% endif %}
 {% endblock %}
 
 {% block tableHead %}
