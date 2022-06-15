@@ -1,0 +1,23 @@
+<div class="card col-span-1 lg:col-span-2">
+    <div class="card-body">
+        <h5 class="uppercase text-xs tracking-wider font-extrabold">
+            {% block period %}
+
+            {% endblock %}
+        </h5>
+        <h1 class="capitalize text-lg mt-1 mb-1"> $
+            <span class="num-3">
+                {% block value %}
+
+                {% endblock %}
+            </span>
+            <span class="text-xs tracking-widest font-extrabold"> /
+                <span class="num-2">
+                    {% block orders %}
+
+                    {% endblock %}
+                </span> orders
+            </span>
+        </h1>
+    </div>
+</div>
