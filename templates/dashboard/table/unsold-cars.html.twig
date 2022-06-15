@@ -1,11 +1,13 @@
 {% extends 'dashboard/table.html.twig' %}
 
 {% block tableTitle %}
-    <h1 class="font-extrabold text-lg">cars sold last year</h1>
+    <h1 class="font-extrabold text-lg">unsold cars</h1>
 {% endblock %}
 
 {% block tableButton %}
-    <a href="#" class="btn-gray text-sm">view all</a>
+    {% if button %}
+        <a href="./unsold-cars" class="btn-gray text-sm">view all</a>
+    {% endif %}
 {% endblock %}
 
 {% block tableHead %}
