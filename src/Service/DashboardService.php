@@ -45,12 +45,12 @@ class DashboardService
 
     public function getCarsSoldLastYear(): array
     {
-        $res = $this->_carsShowroomRepository->getCarsSoldLastYear();
+        $result = $this->_carsShowroomRepository->getCarsSoldLastYear();
 
-        for ($i = 0; $i < count($res); $i++) {
-            $res[$i]['date'] = date('d.m.Y', $res[$i]['date']->getTimestamp());
+        for ($i = 0; $i < count($result); $i++) {
+            $result[$i]['date'] = date('d.m.Y', $result[$i]['date']->getTimestamp());
         }
 
-        return $res;
+        return $result;
     }
 }
