@@ -21,9 +21,9 @@ class F0_CarModelFixtures extends BaseFixture
 
     public function loadData(ObjectManager $manager): void
     {
-        $this->createMany(CarModel::class, 25, function (CarModel $carModel, int $count) {
+        $this->createMany(CarModel::class, 100, function (CarModel $carModel, int $count) {
             $carModel->setModel($this->carFaker->vehicle());
-            $carModel->setYear($this->carFaker->biasedNumberBetween(1980, 2022));
+            $carModel->setYear($this->carFaker->biasedNumberBetween(2000, 2022));
         });
 
         $manager->flush();

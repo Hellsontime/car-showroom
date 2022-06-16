@@ -24,16 +24,16 @@ class F1_CarShowroomFixtures extends BaseFixture
 
     public function loadData(ObjectManager $manager): void
     {
-        $price_range = range(9999, 99999, 1000);
+        $price_range = range(9999, 99999, 500);
         $saleChanceArray = RandomHelper::getRandomBoolArray(80);
 
-        $this->createMany(CarShowroom::class, 100, function (CarShowroom $carShowroom, int $count) use ($price_range, $saleChanceArray) {
+        $this->createMany(CarShowroom::class, 1000, function (CarShowroom $carShowroom, int $count) use ($price_range, $saleChanceArray) {
             $price = $price_range[array_rand($price_range)];
             $isSold = $saleChanceArray[rand(0, 99)];
-            $car_year = $this->getReference(CarModel::class.'_'.rand(0,24))->getYear();
+            $car_year = $this->getReference(CarModel::class.'_'.rand(0,99))->getYear();
 
             $carShowroom->setColor($this->faker->colorName());
-            $carShowroom->setModel($this->getReference(CarModel::class.'_'.rand(0,24)));
+            $carShowroom->setModel($this->getReference(CarModel::class.'_'.rand(0,99)));
             $carShowroom->setPrice($price);
             $carShowroom->setSign($isSold);
             if ($isSold) {
