@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\CarModel;
 use App\Entity\CarShowroom;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -78,6 +80,25 @@ class CarShowroomRepository extends ServiceEntityRepository
             ->orderBy('c.date_of_sale', 'DESC')
             ->setParameter('from', date('Y-m-d', strtotime('-365 day')))
             ->setParameter('to', date('Y-m-d'))
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getUnsoldCars()
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('cm.model', 'cm.year', 'cs.color', 'cs.price')
+            ->from(CarShowroom::class, 'cs')
+            ->leftJoin(
+                CarModel::class,
+                'cm',
+                Join::WITH,
+                'cs.model = cm.id'
+            )
+            ->andWhere('cs.date_of_sale IS NOT NULL')
+            ->orderBy('cm.year', 'DESC')
+            ->addOrderBy('cs.price', 'ASC')
             ->getQuery()
             ->getResult();
     }
