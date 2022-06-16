@@ -2,10 +2,19 @@
 
 namespace App\Controller;
 
+use App\Service\DashboardService;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends BaseController
 {
+    private DashboardService $_dashboardService;
+
+    public function __construct(DashboardService $dashboardService)
+    {
+        $this->_dashboardService = $dashboardService;
+    }
+
     public function __invoke(): Response
     {
         return $this->render('pages/home/cars-showroom-dashboard.html.twig');
@@ -28,8 +37,10 @@ class DashboardController extends BaseController
 
     public function avgToday(): Response
     {
-        $avgToday = rand(10000, 99999);
-        $orders = round($avgToday / 10000);
+        $res = $this->_dashboardService->avgToday();
+
+        $avgToday = $res['avgPrice'];
+        $orders = $res['orders'];
 
         return $this->render(
             'dashboard/card/avg-today.html.twig',
@@ -39,8 +50,10 @@ class DashboardController extends BaseController
 
     public function avgWeek(): Response
     {
-        $avgWeek = rand(10000*7, 99999*7);
-        $orders = round($avgWeek / 10000);
+        $res = $this->_dashboardService->avgInRange(7);
+
+        $avgWeek = $res['avgPrice'];
+        $orders = $res['orders'];
 
         return $this->render(
             'dashboard/card/avg-week.html.twig',
@@ -50,8 +63,10 @@ class DashboardController extends BaseController
 
     public function avgMonth(): Response
     {
-        $avgMonth = rand(10000*30, 99999*30);
-        $orders = round($avgMonth / 10000);
+        $res = $this->_dashboardService->avgInRange(30);
+
+        $avgMonth = $res['avgPrice'];
+        $orders = $res['orders'];
 
         return $this->render(
             'dashboard/card/avg-month.html.twig',
@@ -61,8 +76,10 @@ class DashboardController extends BaseController
 
     public function avgQuarter(): Response
     {
-        $avgQuarter = rand(10000*90, 99999*90);
-        $orders = round($avgQuarter / 10000);
+        $res = $this->_dashboardService->avgInRange(90);
+
+        $avgQuarter = $res['avgPrice'];
+        $orders = $res['orders'];
 
         return $this->render(
             'dashboard/card/avg-quarter.html.twig',
@@ -72,8 +89,10 @@ class DashboardController extends BaseController
 
     public function avgYear(): Response
     {
-        $avgYear = rand(10000*365, 99999*365);
-        $orders = round($avgYear / 10000);
+        $res = $this->_dashboardService->avgInRange(365);
+
+        $avgYear = $res['avgPrice'];
+        $orders = $res['orders'];
 
         return $this->render(
             'dashboard/card/avg-year.html.twig',
@@ -83,8 +102,10 @@ class DashboardController extends BaseController
 
     public function avgAllTime(): Response
     {
-        $avgAllTime = rand(10000*365*2, 99999*365*2);
-        $orders = round($avgAllTime / 10000);
+        $res = $this->_dashboardService->avgAllTime();
+
+        $avgAllTime = $res['avgPrice'];
+        $orders = $res['orders'];
 
         return $this->render(
             'dashboard/card/avg-all-time.html.twig',
@@ -92,18 +113,16 @@ class DashboardController extends BaseController
         );
     }
 
+    public function test(): Response
+    {
+        $res = $this->_dashboardService->getCarsSoldLastYear();
+
+        return new JsonResponse($res);
+    }
+
     public function carsSoldLastYear(bool $sliced = false, bool $button = false): Response
     {
-        $carsSoldLastYear = [
-            ['date' => '01.05.2022', 'sold' => 15],
-            ['date' => '02.05.2022', 'sold' => 19],
-            ['date' => '03.05.2022', 'sold' => 21],
-            ['date' => '04.05.2022', 'sold' => 11],
-            ['date' => '05.05.2022', 'sold' => 14],
-            ['date' => '06.05.2022', 'sold' => 17],
-            ['date' => '07.05.2022', 'sold' => 13],
-            ['date' => '08.05.2022', 'sold' => 26],
-        ];
+        $carsSoldLastYear = $this->_dashboardService->getCarsSoldLastYear();
 
         if ($sliced) {
             $carsSoldLastYear = array_slice($carsSoldLastYear, 0, 5);
