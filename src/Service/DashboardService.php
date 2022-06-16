@@ -53,4 +53,9 @@ class DashboardService
 
         return $result;
     }
+
+    public function getUnsoldCars(): array
+    {
+        return $this->_carsShowroomRepository->getUnsoldCars();
+    }
 }
