@@ -115,7 +115,7 @@ class DashboardController extends BaseController
 
     public function test(): Response
     {
-        $res = $this->_dashboardService->getCarsSoldLastYear();
+        $res = $this->_dashboardService->getUnsoldCars();
 
         return new JsonResponse($res);
     }
@@ -139,16 +139,7 @@ class DashboardController extends BaseController
 
     public function unsoldCars(bool $sliced = false, bool $button = false): Response
     {
-        $unsoldCars = [
-            ['model' => 'civic', 'year' => 2005, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'lamborghini', 'year' => 2003, 'price' => 41234, 'color' => 'color'],
-            ['model' => 'skoda', 'year' => 1994, 'price' => 12345, 'color' => 'color'],
-            ['model' => 'volkswagen', 'year' => 2017, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'audi', 'year' => 2018, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'bmw', 'year' => 2022, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'mercedes', 'year' => 1999, 'price' => 12325, 'color' => 'color'],
-            ['model' => 'porsche', 'year' => 2001, 'price' => 123442, 'color' => 'color'],
-        ];
+        $unsoldCars = $this->_dashboardService->getUnsoldCars();
 
         if ($sliced) {
             $unsoldCars = array_slice($unsoldCars, 0, 5);
