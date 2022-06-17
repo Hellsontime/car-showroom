@@ -5,7 +5,7 @@ namespace App\Helper;
 class DateTimeHelper
 {
     // Find a randomDate between $start_date and $end_date
-    public static function randomDateTillNow($start_date): string
+    public static function randomDateTillNow(string $start_date): string
     {
         // Convert to timetamps
         $min = strtotime($start_date);
