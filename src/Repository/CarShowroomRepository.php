@@ -103,6 +103,24 @@ class CarShowroomRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getModelsOnSale()
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('cm.model', 'COUNT(1) AS count')
+            ->from(CarShowroom::class, 'cs')
+            ->innerJoin(
+                CarModel::class,
+                'cm',
+                Join::WITH,
+                'cm.id = cs.model'
+            )
+            ->andWhere('cs.date_of_sale IS NULL')
+            ->groupBy('cm.model')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return CarShowroom[] Returns an array of CarShowroom objects
 //     */
