@@ -45,19 +45,32 @@
     <!-- end status -->
 
     <!-- Unsold cars & Sold last year -->
-    <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 mt-5">
+    <div class="grid grid-cols-7 lg:grid-cols-1 gap-5 mt-5">
 
         <!-- cars sold last year table -->
-        {{ render(controller(
-            'App\\Controller\\DashboardController::carsSoldLastYear', {'sliced': true, 'button': true}
-        )) }}
+        <div class="box col-span-2">
+            {{ render(controller(
+                'App\\Controller\\DashboardController::carsSoldLastYear', {'sliced': true, 'button': true}
+            )) }}
+        </div>
+
         <!-- cars sold last year table -->
 
         <!-- unsold cars -->
-        {{ render(controller(
-            'App\\Controller\\DashboardController::unsoldCars', {'sliced': true, 'button': true}
-        )) }}
+        <div class="box col-span-3">
+            {{ render(controller(
+                'App\\Controller\\DashboardController::unsoldCars', {'sliced': true, 'button': true}
+            )) }}
+        </div>
         <!-- unsold cars -->
+
+        <!-- Cars currently on sale -->
+        <div class="box col-span-2">
+            {{ render(controller(
+                'App\\Controller\\DashboardController::carsCurrentlyOnSale', {'sliced': true, 'button': true}
+            )) }}
+        </div>
+        <!-- end Cars currently on sale -->
 
     </div>
     <!-- end Unsold cars & Sold last year -->
@@ -65,11 +78,7 @@
     <!-- Cars currently on sale -->
     <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 mt-5">
 
-        <!-- Cars currently on sale -->
-        {{ render(controller(
-            'App\\Controller\\DashboardController::carsCurrentlyOnSale', {'sliced': true, 'button': true}
-        )) }}
-        <!-- end Cars currently on sale -->
+
 
     </div>
     <!-- end Cars currently on sale -->
