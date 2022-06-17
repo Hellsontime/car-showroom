@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Service\DashboardService;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends BaseController
@@ -113,13 +112,6 @@ class DashboardController extends BaseController
         );
     }
 
-    public function test(): Response
-    {
-        $res = $this->_dashboardService->getUnsoldCars();
-
-        return new JsonResponse($res);
-    }
-
     public function carsSoldLastYear(bool $sliced = false, bool $button = false): Response
     {
         $carsSoldLastYear = $this->_dashboardService->getCarsSoldLastYear();
@@ -156,16 +148,7 @@ class DashboardController extends BaseController
 
     public function carsCurrentlyOnSale(bool $sliced = false, bool $button = false): Response
     {
-        $carsCurrentlyOnSale = [
-            ['model' => 'mercedes', 'year' => 2016, 'price' => 12325, 'color' => 'color'],
-            ['model' => 'lamborghini', 'year' => 2003, 'price' => 41234, 'color' => 'color'],
-            ['model' => 'skoda', 'year' => 1994, 'price' => 12345, 'color' => 'color'],
-            ['model' => 'volkswagen', 'year' => 2017, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'porsche', 'year' => 2001, 'price' => 123442, 'color' => 'color'],
-            ['model' => 'audi', 'year' => 2018, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'bmw', 'year' => 2022, 'price' => 1234, 'color' => 'color'],
-            ['model' => 'civic', 'year' => 2005, 'price' => 1234, 'color' => 'color'],
-        ];
+        $carsCurrentlyOnSale = $this->_dashboardService->getModelsOnSale();
 
         if ($sliced) {
             $carsCurrentlyOnSale = array_slice($carsCurrentlyOnSale, 0, 5);
