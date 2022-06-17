@@ -64,13 +64,13 @@
         </div>
         <!-- unsold cars -->
 
-        <!-- Cars currently on sale -->
+        <!-- Models on sale -->
         <div class="box col-span-2">
             {{ render(controller(
-                'App\\Controller\\DashboardController::carsCurrentlyOnSale', {'sliced': true, 'button': true}
+                'App\\Controller\\DashboardController::modelsOnSale', {'sliced': true, 'button': true}
             )) }}
         </div>
-        <!-- end Cars currently on sale -->
+        <!-- end Models on sale -->
 
     </div>
     <!-- end Unsold cars & Sold last year -->

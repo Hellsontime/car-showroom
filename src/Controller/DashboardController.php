@@ -146,18 +146,18 @@ class DashboardController extends BaseController
         );
     }
 
-    public function carsCurrentlyOnSale(bool $sliced = false, bool $button = false): Response
+    public function modelsOnSale(bool $sliced = false, bool $button = false): Response
     {
-        $carsCurrentlyOnSale = $this->_dashboardService->getModelsOnSale();
+        $modelsOnSale = $this->_dashboardService->getModelsOnSale();
 
         if ($sliced) {
-            $carsCurrentlyOnSale = array_slice($carsCurrentlyOnSale, 0, 5);
+            $modelsOnSale = array_slice($modelsOnSale, 0, 5);
         }
 
         return $this->render(
-            'dashboard/table/cars-currently-on-sale.html.twig',
+            'dashboard/table/models-on-sale.html.twig',
             [
-                'carsCurrentlyOnSale' => $carsCurrentlyOnSale,
+                'modelsOnSale' => $modelsOnSale,
                 'button' => $button,
             ]
         );
