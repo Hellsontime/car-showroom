@@ -3,6 +3,8 @@
 namespace App\Service;
 
 use App\Repository\CarShowroomRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 
 class DashboardService
 {
@@ -13,32 +15,48 @@ class DashboardService
         $this->_carsShowroomRepository = $carShowroomRepository;
     }
 
+    /**
+     * @return array
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function avgAllTime(): array
     {
         $result = $this->_carsShowroomRepository->getAveragePriceAllTime();
 
-        $avgPrice = round($result[0][1]);
-        $orders = $result[0][2];
+        $avgPrice = round($result['avgPrice']);
+        $orders = $result['orders'];
 
         return ['avgPrice' => $avgPrice, 'orders' => $orders];
     }
 
+    /**
+     * @return array
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function avgToday(): array
     {
         $result = $this->_carsShowroomRepository->getAveragePriceToday();
 
-        $avgPrice = round($result[0][1]);
-        $orders = $result[0][2];
+        $avgPrice = round($result['avgPrice']);
+        $orders = $result['orders'];
 
         return ['avgPrice' => $avgPrice, 'orders' => $orders];
     }
 
+    /**
+     * @param int $daysAgo
+     * @return array
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function avgInRange(int $daysAgo): array
     {
         $result = $this->_carsShowroomRepository->getAveragePriceInRange($daysAgo);
 
-        $avgPrice = round($result[0][1]);
-        $orders = $result[0][2];
+        $avgPrice = round($result['avgPrice']);
+        $orders = $result['orders'];
 
         return ['avgPrice' => $avgPrice, 'orders' => $orders];
     }
