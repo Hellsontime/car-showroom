@@ -96,7 +96,7 @@ class CarShowroomRepository extends ServiceEntityRepository
             ->andWhere('c.date_of_sale BETWEEN :from AND :to')
             ->groupBy('c.date_of_sale')
             ->orderBy('c.date_of_sale', 'DESC')
-            ->setParameter('from', date('Y-m-d', strtotime('-365 day')))
+            ->setParameter('from', date('Y-m-d', strtotime('-1 year')))
             ->setParameter('to', date('Y-m-d'))
             ->getQuery()
             ->getResult();
