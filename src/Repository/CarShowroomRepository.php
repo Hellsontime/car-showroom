@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\CarModel;
 use App\Entity\CarShowroom;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -41,34 +43,50 @@ class CarShowroomRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return array
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function getAveragePriceAllTime(): array
     {
         return $this->createQueryBuilder('c')
-            ->select('avg(c.price), count(c)')
+            ->select('avg(c.price) as avgPrice, count(c) as orders')
             ->andWhere('c.date_of_sale IS NOT NULL')
             ->getQuery()
-            ->getResult();
+            ->getSingleResult();
     }
 
+    /**
+     * @return array
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function getAveragePriceToday(): array
     {
         return $this->createQueryBuilder('c')
-            ->select('avg(c.price), count(c)')
+            ->select('avg(c.price) as avgPrice, count(c) as orders')
             ->andWhere('c.date_of_sale = :today')
             ->setParameter('today', date('Y-m-d'))
             ->getQuery()
-            ->getResult();
+            ->getSingleResult();
     }
 
+    /**
+     * @param int $daysAgo
+     * @return array
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function getAveragePriceInRange(int $daysAgo): array
     {
         return $this->createQueryBuilder('c')
-            ->select('avg(c.price), count(c)')
+            ->select('avg(c.price) as avgPrice, count(c) as orders')
             ->andWhere('c.date_of_sale BETWEEN :from AND :to')
             ->setParameter('from', date('Y-m-d', strtotime('-'.$daysAgo.' day')))
             ->setParameter('to', date('Y-m-d'))
             ->getQuery()
-            ->getResult();
+            ->getSingleResult();
     }
 
     public function getCarsSoldLastYear(): array
