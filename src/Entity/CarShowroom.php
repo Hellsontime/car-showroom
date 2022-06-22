@@ -17,13 +17,13 @@ class CarShowroom
     #[ORM\Column(type: 'string', length: 32)]
     private string $color;
 
-    #[ORM\Column(type: 'integer')]
-    private string $price;
+    #[ORM\Column(type: 'decimal')]
+    private float $price;
 
     #[ORM\Column(type: 'boolean', options: [
         "default" => false
     ])]
-    private string $sign;
+    private bool $sign;
 
     #[ORM\Column(type: 'date_immutable', nullable: true)]
     private \DateTimeImmutable $date_of_sale;
